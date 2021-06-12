@@ -10,8 +10,12 @@ class Results extends Component{
         super();
 
         this.state = {
-            gifs = []
+            gifs: []
         }
+    }
+
+    getInformation = () => {
+        
     }
 
     render(){
