@@ -7,4 +7,4 @@ function GifCard(props){
             <img src={props.imageURL} />
         </div>
     )
-}
+} export default GifCard;
