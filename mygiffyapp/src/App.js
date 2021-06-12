@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 //importing components
-import SearchFieldComponent from './Components/SearchFieldComponent';
+import Results from './Components/Results';
 
 function App() {
   return (
     <div>
-      <SearchFieldComponent />
+      <Results />
     </div>
   );
 }
