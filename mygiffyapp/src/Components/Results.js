@@ -11,7 +11,7 @@ class Results extends Component{
         displayedgifs: [],
         totalgifs: [],
         title: "No results...",
-        currentSearch: ""
+        currentSearch: "trending"
     }
 
     componentDidMount(){ //show trending once page loads
@@ -28,6 +28,7 @@ class Results extends Component{
             console.log(trendingGifs);
             this.setState({
                 displayedgifs: trendingGifs.data,
+                totalgifs: trendingGifs.data,
                 title: "Here's What's Currently Trending!"
             })
         })
@@ -49,6 +50,8 @@ class Results extends Component{
                 currentSearch: search
             })
         })
+
+        this.resetSelect();
     }
 
     //Getting the ratings of GIFS
@@ -59,6 +62,7 @@ class Results extends Component{
 
         if (filter == "default"){
             this.setState({displayedgifs: array});
+            newArray = array;
         } else {
             array.map((gif) => {
                 if (gif.rating == filter){
@@ -68,6 +72,17 @@ class Results extends Component{
     
             this.setState({displayedgifs: newArray});
         }
+
+        if (newArray.length == 0){
+            this.setState({title: "Looks like we couldn't find anything... why don't you try something else? :)"});
+        } else {
+            this.setState({title: "Search results for " + "\"" + this.state.currentSearch + "\"..."});
+        }
+    }
+
+    //resets the filter dropbox to default
+    resetSelect(){
+        document.getElementById("selectRating").selectedIndex = 0;
     }
 
     render(){
