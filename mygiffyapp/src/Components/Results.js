@@ -7,8 +7,10 @@ import GifCard from "./GifCard";
 
 class Results extends Component{
     state = {
-        gifs: [],
-        title: "No results..."
+        displayedgifs: [],
+        totalgifs: [],
+        title: "No results...",
+        currentSearch: ""
     }
 
     componentDidMount(){ //show trending once page loads
@@ -22,8 +24,10 @@ class Results extends Component{
         fetch(trendingURL)
         .then(response => response.json())
         .then(trendingGifs => {
+            console.log(trendingGifs);
             this.setState({
-                gifs: trendingGifs.data
+                displayedgifs: trendingGifs.data,
+                title: "Trending"
             })
         })
     }
@@ -38,16 +42,44 @@ class Results extends Component{
         .then(response => response.json())
         .then(searchResults => {
             this.setState({
-                gifs: searchResults.data
+                displayedgifs: searchResults.data,
+                totalgifs: searchResults.data,
+                title: "Search results for " + search,
+                currentSearch: search
             })
         })
     }
 
+    //Getting the ratings of GIFS
+    getRatings = () => {
+        let filter = document.getElementById("selectRating").value;
+        let newArray = [];
+        let array = this.state.totalgifs;
+
+        if (filter == "default"){
+            this.setState({displayedgifs: array});
+        } else {
+            array.map((gif) => {
+                if (gif.rating == filter){
+                    newArray.push(gif);
+                }
+            })
+    
+            this.setState({displayedgifs: newArray});
+        }
+    }
+
     render(){
-        const displayedGifs = this.state.gifs.map(gif => <GifCard gif={gif}/>)
+        const displayedGifs = this.state.displayedgifs.map(gif => <GifCard gif={gif}/>)
         return(
             <div>
-                <SearchFieldComponent searchFunction={this.searchTerm}/>
+                <SearchFieldComponent 
+                searchFunction={this.searchTerm} 
+                resultText={this.state.title} 
+                changeFunction={this.getRatings}
+                />
+
+
                 {displayedGifs}
             </div>
         )
