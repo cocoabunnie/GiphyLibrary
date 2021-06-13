@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 //importing components
 import SearchFieldComponent from "./SearchFieldComponent";
 import GifCard from "./GifCard";
+import Header from "./PageTitle";
 
 class Results extends Component{
     state = {
@@ -73,6 +74,7 @@ class Results extends Component{
         const displayedGifs = this.state.displayedgifs.map(gif => <GifCard gif={gif}/>)
         return(
             <div>
+                <Header/>
                 <SearchFieldComponent 
                 searchFunction={this.searchTerm} 
                 resultText={this.state.title} 
