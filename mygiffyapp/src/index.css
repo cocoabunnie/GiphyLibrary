@@ -16,12 +16,12 @@ code {
   background-image: url(Art/doodlebackground4.jpg);
   margin-top: 0;
   text-align: center;
-  padding: 50px;
+  padding: 40px;
 }
 
 h1{
   background-color: white;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 /* Search Component Layout Using CSS Grid*/
