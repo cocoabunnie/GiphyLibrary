@@ -14,12 +14,9 @@ function SearchFieldComponent(props){
                 </select>
             </div>
 
-            <div class="textbox">
-                <input id="userInput" type="text" placeholder="What are you looking for?" />
-            </div>
-
-            <div class="searchButton">
-                <button onClick={props.searchFunction}>Search</button>
+            <div class="searchArea">
+                    <input id="userInput" type="text" placeholder="What are you looking for?" />
+                    <button onClick={props.searchFunction}>Search</button>
             </div>
 
             <div class="resultText">

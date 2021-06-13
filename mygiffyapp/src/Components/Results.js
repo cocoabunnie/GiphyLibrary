@@ -28,7 +28,7 @@ class Results extends Component{
             console.log(trendingGifs);
             this.setState({
                 displayedgifs: trendingGifs.data,
-                title: "Trending"
+                title: "Here's What's Currently Trending!"
             })
         })
     }
@@ -45,7 +45,7 @@ class Results extends Component{
             this.setState({
                 displayedgifs: searchResults.data,
                 totalgifs: searchResults.data,
-                title: "Search results for " + search,
+                title: "Search results for " + "\"" + search + "\"...",
                 currentSearch: search
             })
         })
