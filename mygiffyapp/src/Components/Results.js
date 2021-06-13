@@ -6,14 +6,16 @@ import SearchFieldComponent from "./SearchFieldComponent";
 import GifCard from "./GifCard";
 
 class Results extends Component{
-    constructor(){
-        super();
-
-        this.state = {
-            gifs: []
-        }
+    state = {
+        gifs: [],
+        title: "No results..."
     }
 
+    componentDidMount(){ //show trending once page loads
+        this.showTrending()
+    }
+
+    //Function to get trending gif data
     showTrending = () => {
         let myAPI = "rGQfGquBOeYnM9jwCFYyoZBkB5lRWvfy";
         let trendingURL = "http://api.giphy.com/v1/gifs/trending?api_key=" + myAPI;
@@ -21,17 +23,17 @@ class Results extends Component{
         .then(response => response.json())
         .then(trendingGifs => {
             this.setState({
-                gifs: trendingGifs
+                gifs: trendingGifs.data
             })
-            console.log(this.state.gifs);
         })
     }
 
     render(){
+        const displayedGifs = this.state.gifs.map(gif => <GifCard gif={gif}/>)
         return(
             <div>
-                <SearchFieldComponent searchFunction={this.showTrending}/>
-                <GifCard imageURL=""/>
+                <SearchFieldComponent />
+                {displayedGifs}
             </div>
         )
     }

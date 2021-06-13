@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 function GifCard(props){
     return (
         <div>
-            <p>Test Image</p>
-            <img src={props.imageURL} />
+            <img src={props.gif.images.downsized.url} />
         </div>
     )
 } export default GifCard;
