@@ -28,11 +28,26 @@ class Results extends Component{
         })
     }
 
+    //Function allows user to search a term
+    searchTerm = () => {
+        let myAPI = "rGQfGquBOeYnM9jwCFYyoZBkB5lRWvfy";
+        let search = document.getElementById("userInput").value;
+        let url = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + myAPI;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(searchResults => {
+            this.setState({
+                gifs: searchResults.data
+            })
+        })
+    }
+
     render(){
         const displayedGifs = this.state.gifs.map(gif => <GifCard gif={gif}/>)
         return(
             <div>
-                <SearchFieldComponent />
+                <SearchFieldComponent searchFunction={this.searchTerm}/>
                 {displayedGifs}
             </div>
         )
