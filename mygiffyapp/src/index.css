@@ -23,3 +23,49 @@ h1{
   background-color: white;
   font-size: 80px;
 }
+
+/* Search Component Layout */
+
+.searchLayout{
+  display: grid;
+}
+
+.filterTool{
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.textbox{
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.textbox input{
+  width: 500px;
+  font-size: large;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.searchButton{
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.searchButton button{
+  width: 100px;
+  padding: 5px;
+  background-color: white;
+  color:black;
+}
+
+/*Gifs*/
+.gifcard{
+  display: inline;
+}
+
+.gifcard img{
+  width: 400px;
+  margin: 10px;
+}

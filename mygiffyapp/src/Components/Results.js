@@ -81,8 +81,10 @@ class Results extends Component{
                 changeFunction={this.getRatings}
                 />
 
-
-                {displayedGifs}
+                <div class="gifs">
+                    {displayedGifs}
+                </div>
+                
             </div>
         )
     }
