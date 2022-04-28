@@ -21,7 +21,7 @@ class Results extends Component{
     //Function to get trending gif data
     showTrending = () => {
         let myAPI = "rGQfGquBOeYnM9jwCFYyoZBkB5lRWvfy";
-        let trendingURL = "http://api.giphy.com/v1/gifs/trending?api_key=" + myAPI;
+        let trendingURL = "https://api.giphy.com/v1/gifs/trending?api_key=" + myAPI;
         fetch(trendingURL)
         .then(response => response.json())
         .then(trendingGifs => {
@@ -38,7 +38,7 @@ class Results extends Component{
     searchTerm = () => {
         let myAPI = "rGQfGquBOeYnM9jwCFYyoZBkB5lRWvfy";
         let search = document.getElementById("userInput").value;
-        let url = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + myAPI;
+        let url = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + myAPI;
 
         fetch(url)
         .then(response => response.json())
